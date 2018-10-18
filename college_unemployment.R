@@ -24,3 +24,19 @@ data %>%
   scale_y_continuous(labels = dollar_format()) + 
   coord_flip() +
   theme_bw()
+
+# lets look at which majors have high or low perc women
+data %>%
+  na.omit(ShareWomen) %>%
+  mutate(Major_category=fct_reorder(Major_category, ShareWomen)) %>% 
+  ggplot(aes(x=Major_category, y=ShareWomen)) +
+  geom_boxplot() +
+  coord_flip()
+
+# perc women by salary
+
+data %>%
+  ggplot(aes(ShareWomen, Median)) +
+  geom_point() +
+  geom_smooth() +
+  scale_y_continuous(labels=dollar_format())
