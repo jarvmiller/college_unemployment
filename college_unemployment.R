@@ -24,4 +24,3 @@ data %>%
   scale_y_continuous(labels = dollar_format()) + 
   coord_flip() +
   theme_bw()
-
